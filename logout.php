@@ -3,5 +3,7 @@
    unset($_SESSION["email"]);
    unset($_SESSION["pswd"]);
    unset($_SESSION["flag"]);
-   header('Location: login.html');
+   session_destroy();
+   header('Location: loginh.php');
+
 ?>

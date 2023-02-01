@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -10,72 +11,44 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="name.js"></script>
+
 
 </head>
-<style type="text/css">
-  body {
-    background-color: skyblue;
-  }
 
-  .navbar-brand {
-    font-size: 30px;
-    color: blue;
-  }
-
-  .navbar .container-fluid {
-    background-color: gray;
-    display: flex;
-
-  }
-
-  label{
-    font-size:20px;
-  }
-  .input-group-prepend{
-    font-size:20px;
-  }
-  .container .form-group {
-    font-size: 20px;
-  }
-</style>
 
 <body>
+<!-- Includes Navbar -->
 <?php
-    session_start();
-    if($_SESSION["flag"]!=1){
-      header('location:login.html');
-    }
-    ?>
-  <nav class="navbar bg-body-secondary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="phpassignment.php">Home</a>
-      <a class="navbar-brand" href="logout.php">Logout</a>
+ include'header.php';
+?>
 
-    </div>
-  </nav>
   <form action="form5.php" enctype="multipart/form-data" class="container mt-5" method="post">
     <div class="form-group my-5">
       <label for="usr"> First Name:</label>
-      <input type="text" class="form-control" id="usr" name="firstname">
+      <input type="text" class="form-control" id="firstname" name="firstname">
     </div>
     <div class="form-group">
       <label for="usr">Last Name:</label>
-      <input type="text" class="form-control" id="usr" name="lastname">
+      <input type="text" class="form-control" id="lastname" name="lastname">
     </div>
+    <div class="form-group">
+  <label for="usr">Full Name:</label>
+  <input type="text" class="form-control" disabled id="editText" name="fullname">
+  </div>
 
+  <!-- Takes image as input -->
     <label for="myfile">Select an Image:</label>
     <input type="file" id="myfile" name="image" class="image mt-5"><br><br>
+    
+    <!-- Takes marks in text area -->
 
     <h1>Enter Your Marks:</h1>
-
-    <label for="eng">English:</label>
-    <input type="number" id="eng" name="english"><br><br>
-    <label for="math">Mathematics:</label>
-    <input type="number" id="math" name="mathematics"><br><br>
-    <label for="sci">Science:</label>
-    <input type="number" id="sci" name="science"><br><br>
-    <label for="comp">Computer:</label>
-    <input type="number" id="comp" name="computer"><br><br>
+    <textarea name="marks" class="form-control-file" cols="45" rows="5"></textarea>
+    <br><br>
+    
     <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
     <div class="input-group mb-2 mr-sm-2">
       <div class="input-group-prepend">
@@ -84,34 +57,18 @@
       </div>
       <input type="number" name="number" id="inlineFormInputGroupUsername2" class="number">
     </div>
+    
+    <!-- takes email as input -->
     <label for="mail">Email Id:</label>
     <input type="text" id="mail" name="mail" class="mail"><br><br><br>
     <input type="submit" value="Submit" name="submit">
 
 
   </form>
+  <!-- Pagination -->
   <footer>
-  <nav aria-label="Page navigation example" class="mb-5">
-    <ul class="pagination justify-content-center ">
-      <li class="page-item">
-        <a class="page-link" href="form4h.php" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="form1h.php">1</a></li>
-      <li class="page-item"><a class="page-link" href="form2h.php">2</a></li>
-      <li class="page-item"><a class="page-link" href="form3h.php">3</a></li>
-      <li class="page-item"><a class="page-link" href="form4h.php">4</a></li>
-      <li class="page-item"><a class="page-link" href="form5h.php">5</a></li>
-      <li class="page-item"><a class="page-link" href="form6h.php">6</a></li>
-      <li class="page-item">
-        <a class="page-link" href="form6h.php" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  </footer>
+  <?php include'footer.php';?>
+</footer>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

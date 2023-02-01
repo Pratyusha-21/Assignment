@@ -9,59 +9,18 @@
 
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <link rel="stylesheet" href="style.css">
+            <script src="name.js"></script>           
 
 
-  </head>
-  <style type="text/css">
-  	body{
-  		background-color: skyblue;
-  	}
-  	.navbar-brand{
-  		font-size: 30px;
-  		color: blue;
-      
-  	}
-  	.navbar .container-fluid{
-  		background-color: gray;
-      display: flex;
-  	}
-  	.container .form-group{
-  		font-size: 60px;
-  	}
-    /* .pagination{
-    justify-content: center;
-    
-    }
-    .pagination a {
-      color: black;
-       
-      padding: 8px 16px;      
-      text-decoration: none;      
-      transition: background-color .3s;
-}
-
-.pagination a.active {
-  background-color: dodgerblue;
-  color: white;
-} */
-
-.pagination a:hover:not(.active) {background-color: #ddd;}
-  </style>
+  </head>  
  
   <body>
+  
   <?php
-    session_start();
-    if($_SESSION["flag"]!=1){
-      header('location:login.html');
-    }
-    ?>
-  	<nav class="navbar bg-body-secondary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="phpassignment.php">Home</a>
-    <a class="navbar-brand" href="logout.php">Logout</a>
-
-  </div>
-
+ include'header.php';
+ ?>	
+<!-- First name and last name field -->
 </nav>
  <form action="form1.php" class="container mt-5" method="post">   
 <div class="form-group my-5">
@@ -79,41 +38,12 @@
 <input type="submit" name="submit">
 </form>
 
+<!-- Pagination -->
 <footer>
-  <nav aria-label="Page navigation example" class="fixed-bottom mb-5">
-    <ul class="pagination justify-content-center ">
-      <li class="page-item">
-        <a class="page-link" href="form1h.php" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="form1h.php">1</a></li>
-      <li class="page-item"><a class="page-link" href="form2h.php">2</a></li>
-      <li class="page-item"><a class="page-link" href="form3h.php">3</a></li>
-      <li class="page-item"><a class="page-link" href="form4h.php">4</a></li>
-      <li class="page-item"><a class="page-link" href="form5h.php">5</a></li>
-      <li class="page-item"><a class="page-link" href="form6h.php">6</a></li>
-      <li class="page-item">
-        <a class="page-link" href="form2h.php" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  </footer>
+  <?php include'footer.php'; ?>
+</footer>
 
-<script>
-  $(document).ready(function () {
-      var firstname = "";
-      $("#firstname").keyup(function () {
-          $('#editText').val($('#firstname').val());
-          firstname =$('#firstname').val()
-      });
-      $("#lastname").keyup(function () {
-          $('#editText').val(firstname + " "+ ($('#lastname').val()));
-      });
-  });
-</script>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

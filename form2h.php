@@ -8,85 +8,51 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <link rel="stylesheet" href="style.css">
+            <script src="name.js"></script>          
 
-  </head>
-  <style type="text/css">
-  	body{
-  		background-color: skyblue;
-  	}
-  	.navbar-brand{
-  		font-size: 30px;
-  		color: blue;
-  	}
-  	.navbar .container-fluid{
-  		background-color: gray;
-      display: flex;
 
-  	}
-  	.container .form-group{
-  		font-size: 60px;
-  	}
-    label{
-    font-size:20px;
-  }
-  .input-group-prepend{
-    font-size:20px;
-  }
-  .container .form-group {
-    font-size: 20px;
-  }
-  </style>
+  </head>  
  
   <body>
+  <!-- Includes Navbar -->
   <?php
-    session_start();
-    if($_SESSION["flag"]!=1){
-      header('location:login.html');
-    }
-    ?>
-  	<nav class="navbar bg-body-secondary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="phpassignment.php">Home</a>
-    <a class="navbar-brand" href="logout.php">Logout</a>
+ include'header.php';
+ ?>	
+<!-- First name and last name field -->
 
-  </div>
 </nav>
- <form action="form2.php" enctype="multipart/form-data" class="container mt-5" method="post">   
+ <form action="form1.php" class="container mt-5" method="post">   
 <div class="form-group my-5">
   <label for="usr"> First Name:</label>
-  <input type="text" class="form-control" id="usr" name="firstname">
+  <input type="text" class="form-control" id="firstname" name="firstname">
 </div>
 <div class="form-group">
   <label for="usr">Last Name:</label>
-  <input type="text" class="form-control" id="usr" name="lastname">
+  <input type="text" class="form-control" id="lastname" name="lastname">
+</div>
+<div class="form-group">
+  <label for="usr">Full Name:</label>
+  <input type="text" class="form-control" disabled id="editText" name="fullname">
 </div>
 
+<!-- Takes image as input -->
+<div class="form-group">
 <label for="myfile" >Select an Image:</label>
-<input type="file" id="myfile" name="image" class="image mt-5"><br>
+<input type="file" id="myfile" name="image" class="image mt-5" accept="image/*"><br>
+</div>
 <input type="submit" name="submit" class="submit mt-5">
+
 </form>
+
+<!-- Pagination -->
 <footer>
-  <nav aria-label="Page navigation example" class="fixed-bottom mb-5">
-    <ul class="pagination justify-content-center ">
-      <li class="page-item">
-        <a class="page-link" href="form1h.php" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="form1h.php">1</a></li>
-      <li class="page-item"><a class="page-link" href="form2h.php">2</a></li>
-      <li class="page-item"><a class="page-link" href="form3h.php">3</a></li>
-      <li class="page-item"><a class="page-link" href="form4h.php">4</a></li>
-      <li class="page-item"><a class="page-link" href="form5h.php">5</a></li>
-      <li class="page-item"><a class="page-link" href="form6h.php">6</a></li>
-      <li class="page-item">
-        <a class="page-link" href="form3h.php" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  </footer>
+  <?php include'footer.php'; ?>
+</footer>
+
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -100,4 +66,6 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
 
