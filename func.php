@@ -8,14 +8,18 @@ class Base
     /** 
     *
     *Function to display the name of the user.
-    * @param firstname takes firstname as input
-    * @param lastname takes lastname as input
+    * @var firstname takes firstname as input
+    * @var lastname takes lastname as input
     *
     */
 
     public function displayName()                       
     {
 
+        return[
+            'fname' => $_POST['firstname'],
+            
+        ]
    //checks whether the variable is set or not.
    if (isset($_POST['submit'])) {
 

@@ -9,21 +9,13 @@
 <body>
 <nav aria-label="Page navigation example" class="bottom">
     <ul class="pagination justify-content-center ">
-      <li class="page-item">
-        
-      </li>
       <li class="page-item"><a class="page-link" href="form1h.php">1</a></li>
       <li class="page-item"><a class="page-link" href="form2h.php">2</a></li>
       <li class="page-item"><a class="page-link" href="form3h.php">3</a></li>
       <li class="page-item"><a class="page-link" href="form4h.php">4</a></li>
       <li class="page-item"><a class="page-link" href="form5h.php">5</a></li>
       <li class="page-item"><a class="page-link" href="form6h.php">6</a></li>
-      
-        
-      </li>
     </ul>
   </nav>
-
-
 </body>
 </html>

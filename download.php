@@ -3,11 +3,11 @@
     session_start();
 
 // fetching the data  using session variables to print in the pdf
-$firstname = ( $_SESSION['firstname']);
-$lastname = ( $_SESSION['lastname']);
-$a = ( $_SESSION['f']);
-$phone = ( $_SESSION['number'] );
-$email = ( $_SESSION['email'] );
+    $firstname = ( $_SESSION['firstname']);
+    $lastname = ( $_SESSION['lastname']);
+    $a = ( $_SESSION['f']);
+    $phone = ( $_SESSION['number'] );
+    $email = ( $_SESSION['email'] );
 
     $pdf = new FPDF();
     $pdf->AddPage();
@@ -18,8 +18,8 @@ $email = ( $_SESSION['email'] );
     $pdf->Cell(0,10,$firstname." ".$lastname,0,0,'C');
     $pdf->Ln(20);
 
-    for($i=0;$i<count($a);$i+=2){
-        if($i==count($a)-2){
+    for($i=0; $i<count($a); $i+=2) {
+        if($i==count($a)-2) {
             $pdf->Cell(0,10,$a[$i],1,0,'C');
         }
         else{
@@ -31,8 +31,8 @@ $email = ( $_SESSION['email'] );
     $pdf->Ln();
 
     //print the marks in table form
-    for($i=1;$i<count($a);$i+=2){
-        if($i==count($a)-1){
+    for($i=1;$i<count($a);$i+=2) {
+        if($i==count($a)-1) {
             $pdf->Cell(0,10,$a[$i],1,0,'C');
         }
         else{
