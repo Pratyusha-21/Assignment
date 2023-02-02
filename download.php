@@ -6,8 +6,8 @@
     $firstname = ($_SESSION['firstname']);
     $lastname = ($_SESSION['lastname']);
     $a = ($_SESSION['f']);
-    $number = ($_SESSION['number'] );
-    $email = ($_SESSION['email'] );
+    $number = ($_SESSION['number']);
+    $email = ($_SESSION['email']);
 
     $pdf = new FPDF();
     $pdf->AddPage();
@@ -19,7 +19,7 @@
     $pdf->Ln(20);
 
     for ($i=0; $i<count($a); $i+=2) {
-        if($i==count($a)-2) {
+        if($i == count($a)-2) {
             $pdf->Cell(0,10,$a[$i],1,0,'C');
         }
         else{
@@ -29,7 +29,7 @@
     $pdf->Ln();
     //print the marks in table form
     for ($i=1; $i<count($a); $i+=2) {
-        if($i==count($a)-1) {
+        if($i == count($a)-1) {
             $pdf->Cell(0,10,$a[$i],1,0,'C');
         }
         else{

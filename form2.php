@@ -1,7 +1,7 @@
 <?php
     include 'func.php';
     $objprint = new Base();
-    if(isset($_POST['image'])){
+    if (isset($_POST['image'])) {
        $objprint->getImage($_POST['image']);
     }
     $name = $objprint->getName();

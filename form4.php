@@ -2,7 +2,7 @@
   include 'func.php';
   $objprint = new Base();
   $name = $objprint->displayName();
-  if(isset($_POST['image'])){
+  if (isset($_POST['image'])) {
       $objprint->displayImage($_POST['image']);
   }
   $f = $objprint->displayMarks();

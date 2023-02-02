@@ -3,7 +3,7 @@ include 'func.php';
 
 $objprint = new Base();
 $name = $objprint->getName();
-if(isset($_POST['image'])){
+if (isset($_POST['image'])) {
     $objprint->getImage($_POST['image']);
 }
 $f = $objprint->getMarks();
