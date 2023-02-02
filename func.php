@@ -1,86 +1,67 @@
 <link rel="stylesheet" href="styleoutput.css">
-<body>
-
 <?php
 session_start();
-class Base
-{
+class Base {
+    
     /** 
+    * Function to display the name of the user.
     *
-    *Function to display the name of the user.
     * @var firstname takes firstname as input
     * @var lastname takes lastname as input
+    * @return message mixed
     *
     */
+    public function getName() {
+        $message = '';
+        // Checks whether the variable is set or not.
+        if (isset($_POST['submit'])) {
+            $firstname = $_POST["firstname"];
+            $lastname = $_POST["lastname"];
+        
+            // Checks whether the fields are filled.
+            if (empty($firstname) || empty($lastname)) {
+                $message = "Field should not be empty";
+            } 
 
-    public function displayName()                       
-    {
+            // Checks whether any number input is taken.
+            elseif ((is_numeric($firstname) == 1) || (is_numeric($lastname) == 1)) {
+                $message = "number is not allowed";
+            }
 
-        return[
-            'fname' => $_POST['firstname'],
-            
-        ]
-   //checks whether the variable is set or not.
-   if (isset($_POST['submit'])) {
+            // Checks whether name contains any number.
+            elseif (preg_match('~[0-9]+~', $firstname) || (preg_match('~[0-9]+~', $lastname))) {
+                $message = "name should not contain numbers";  
+            }
 
-    $firstname = $_POST["firstname"];
-    $lastname = $_POST["lastname"];
-     
-    //checks whether the fields are filled.
-    if (empty($firstname) || empty($lastname)) {
-        ?>
-           <p>Field should not be empty</p>
-           <?php
-    } 
-
-    //checks whether any number input is taken.
-    elseif ((is_numeric($firstname) == 1) || (is_numeric($lastname) == 1)) {
-        ?>
-        <p>number is not allowed</p>
-        <?php
-    }
-
-    //checks whether name contains any number.
-     elseif (preg_match('~[0-9]+~', $firstname) || (preg_match('~[0-9]+~', $lastname))) {
-        ?>
-        <p>name should not contain numbers</p>
-        <?php  
-    }
-
-    //prints firstname and lastname
-     else {
-        ?>
-        <h1>Hello!<?php echo "$firstname $lastname" ?></h1> <br>
-        <?php
-        $_SESSION['firstname']=$firstname;
-        $_SESSION['lastname']=$lastname;
-
-    }
-   }
+            // Prints firstname and lastname.
+            else {
+                $message = "Hello ".$firstname." ".$lastname;
+                $_SESSION['firstname'] = $firstname;
+                $_SESSION['lastname'] = $lastname;
+            }
+        }
+        return $message;
     }
      
     /**
      * 
      * Function to display image.
+     * 
      * @var target_dir where the image will be stored.
      * @var target_new_name stores the image.
      * @var oldpath current path of the image file.
      * @var target where the image is to be stored and name of the file.
+     * @param img stores the image uploaded.
      *  
      */
-    public function displayImage() {  
+    public function getImage($img) {  
         
-        $oldpath = $_FILES['image']['tmp_name'];
+        $oldpath = $img;
         $target_dir = "images/";
         $target_new_name = "dp.jpg";
         $target = $target_dir . $target_new_name;
-        move_uploaded_file($oldpath, $target);
-        ?>
-        <img src="images/dp.jpg" alt="">
-        <?php
-        
+        move_uploaded_file($oldpath, $target);        
     }
-
 
     /**
      * 
@@ -89,14 +70,12 @@ class Base
      * @var col splits and stores each subject with marks at an index.
      * @var f array to store subjects and marks.
      * @var a for traversal across the array.
+     * @return message mixed.
      * 
      */
 
-    public function displayMarks(){    
+    public function getMarks(){    
        
-       ?>
-        <h3>MARKS:</h3>
-        <?php
         if (isset($_POST['submit']))  {
             $data = $_POST['marks'];
             $col = explode("\n" , $data);
@@ -105,119 +84,86 @@ class Base
                 $arr = explode("|" , $num);
                 $f = array_merge($f , $arr);
             }
-            
-            $_SESSION['f']=$f;
-            ?>
-          <table>
-            <tr>
-                <?php
-                    for ($a = 0; $a<count($f) ; $a+=2) {
-                        ?>
-                            <th><?php echo"$f[$a]"; ?></th>
-                            <?php
-                    }
-                    ?>
-            </tr>
-            <tr>
-                <?php
-                    for ($a = 1; $a<count($f) ; $a+=2) {
-                        ?>
-                            <td><?php echo"$f[$a]"; ?></td>
-                            <?php
-                        
-                    }
-                    ?>
-            </tr>
-            </table>
-            <?php
+        $_SESSION['f'] = $f;
+        return $f;
             
         }
-}
+    }
 
    /**
     * 
     *Function to check and print phone number.
     * @var number to store phone number.
+    * @return number string.
     *
     */
 
-    public function displayPhonenumber() {
+    public function getPhonenumber() {
          
-   //checks whether the variable is set or not.
- 
-    if ( isset ($_POST['submit'])) {
-       $number=$_POST["number"];
+       //Checks whether the variable is set or not.
+       if (isset($_POST['submit'])) {
+            $number = $_POST["number"];
 
-    //checks whether it is a 10-digit number .
-    if (strlen($number)==10) {
-        ?>
-        <p>Phone Number:<a href=''> <?php echo $number ?></a></p>
-        <?php
-        $_SESSION['number']=$number;
-    }
-     else {
-        ?>
-        <p>Invalid Number</p>
-        <?php
-    }
-   }
+            //Checks whether it is a 10-digit number .
+            if(strlen($number) == 10) {
+                $_SESSION['number'] = $number;
+                return $number;
+            }
+            else {
+              return "Invalid Number";
+            }
+        }
     }
 
     /**
      * 
      * Function to check the validation of mail.
      * @param email to store the mail.
+     * @return email mixed.
      * 
      */
-    public function displayMail()             
+    public function getMail()             
     {
+        $message = '';
+        if (isset($_POST['submit'])) {
 
-    if (isset($_POST['submit'])) {
-    //checks whether the variable is set or not.
+            //Checks whether the variable is set or not.
+            $email = $_POST["mail"];
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.apilayer.com/email_verification/check?email=$email",
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: text/plain",
+                "apikey: F8xJOX4jzmnKCAUtw5hqjLPu75BTGeyU"
+            ),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET"
+            ));
+            $response = curl_exec($curl);
+            curl_close($curl);
 
-    $email=$_POST["mail"];
+            // Receive the data:
+            $json = curl_exec($curl);
+            curl_close($curl);
 
-    $curl = curl_init();
-    curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://api.apilayer.com/email_verification/check?email=$email",
-    CURLOPT_HTTPHEADER => array(
-        "Content-Type: text/plain",
-        "apikey: F8xJOX4jzmnKCAUtw5hqjLPu75BTGeyU"
-    ),
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 0,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "GET"
-    ));
-    $response = curl_exec($curl);
-    curl_close($curl);
-
-    // Receive the data:
-
-    $json = curl_exec($curl);
-    curl_close($curl);
-
-    // Decode JSON response:
-
-    $validationResult = json_decode($json, true);
-    
-    //checks validation of email.
-    if ($validationResult['smtp_check']) {
-        ?>
-        <p>Valid Email Id:<?php echo $email ?></p>
-        <?php
-        $_SESSION['email']=$email;
-    } else {
-        ?>
-        <p>Invalid Email Id</p>
-        <?php
-    }
-   }
-
-
+            // Decode JSON response:
+            $validationResult = json_decode($json, true);
+            
+            //Checks validation of email.
+            if ($validationResult['smtp_check']) {
+                $message = "Valid Email ID: ".$email;
+                $_SESSION['email'] = $email;
+            } 
+            else {
+                $message = "Invalid Email Id";
+            }
+        }
+        return $message;
     }
 
     /**
@@ -231,11 +177,4 @@ class Base
         <?php
     }
 }
-
-
 ?>
-
-
-
-</body>
-</html>
