@@ -17,7 +17,7 @@
   <body>
     <!-- Includes navbar -->
     <?php
-      include'header.php';
+      include 'header.php';
     ?> 
 
     <form action="form4.php" enctype="multipart/form-data" class="container mt-5" method="post">   
@@ -54,7 +54,7 @@
     </form>
     <!-- Pagination -->
     <footer>
-      <?php include'footer.php';?>
+      <?php include 'footer.php';?>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

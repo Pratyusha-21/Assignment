@@ -11,7 +11,7 @@
 <body>
 <?php
     session_start();
-    if($_SESSION["flag"]!=1){
+    if ($_SESSION["flag"]!=1){
       header('location:loginh.php');
     }
     ?>

@@ -18,7 +18,7 @@
   <body>
     <!-- Includes Navbar -->
     <?php
-      include'header.php';
+      include 'header.php';
     ?>	
    <!-- First name and last name field -->
 
@@ -47,7 +47,7 @@
 
     <!-- Pagination -->
     <footer>
-      <?php include'footer.php'; ?>
+      <?php include 'footer.php'; ?>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
