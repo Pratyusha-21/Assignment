@@ -1,5 +1,5 @@
 <?php
-    require ("fpdf/fpdf.php");
+    require ("vendor/autoload.php");
     session_start();
 
     // fetching the data  using session variables to print in the pdf
