@@ -1,0 +1,17 @@
+{
+    "name": "pratyusha/assignment",
+    "autoload": {
+        "psr-4": {
+            "Pratyusha\\Assignment\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pratyusha Goswami",
+            "email": "pratyusha.goswami@innoraft.com"
+        }
+    ],
+    "require": {
+        "setasign/fpdf": "^1.8"
+    }
+}

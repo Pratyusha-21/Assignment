@@ -1,0 +1,29 @@
+body {
+    background-color: skyblue;
+  }
+
+  .navbar-brand {
+    font-size: 30px;
+    color: blue;
+  }
+
+  .navbar .container-fluid {
+    background-color: gray;
+    display: flex;
+
+  }
+
+  .container .form-group {
+    font-size: 60px;
+  }
+
+  
+  label{
+    font-size:20px;
+  }
+  .input-group-prepend{
+    font-size:20px;
+  }
+  .container .form-group {
+    font-size: 20px;
+  }
